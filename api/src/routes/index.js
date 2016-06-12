@@ -3,6 +3,7 @@
 const Router = require('koa-router')
 const path = require('path')
 const ect = require('ect')
+const serve = require('koa-static')
 
 const route = (app) => {
   const renderer = ect({ root: path.resolve(__dirname, '../../../app/build'), ext : '.ect' });
@@ -32,6 +33,7 @@ const route = (app) => {
     .use(restApiRouter.routes())
     .use(restApiRouter.allowedMethods())
     .use(staticRoute.allowedMethods())
+    .use(serve(path.resolve(__dirname, '../../../app/build')))
 }
 
 module.exports = route

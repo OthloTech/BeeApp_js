@@ -11,12 +11,15 @@ const PATHS = {
 
 module.exports = {
   entry: {
-    bundle: PATHS.bundle
+    bundle: './app/src/main.js'
   },
   output: {
-    path: PATHS.build,
+    path: './app/build',
     publicPath: '/',
     filename: 'bundle.js'
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -40,9 +43,6 @@ module.exports = {
         loaders: ['style','css','sass']
       }
     ]
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
   }
 } 
 // {

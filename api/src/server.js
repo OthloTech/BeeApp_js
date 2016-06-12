@@ -30,7 +30,7 @@ app.use(function*(next) {
 // ルート定義
 const router = require('./routes/index')(app);
 // dist以下のCSS, JSは静的ファイルとして提供
-app.use(require('koa-static-server')({rootDir: 'app/build', rootPath: '/app/build'}));
+//app.use(require('koa-static-server')({rootDir: 'app/build', rootPath: '/app/build'}));
 
 // サーバー起動
 app.listen(port, function() {

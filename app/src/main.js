@@ -5,7 +5,9 @@ window.App = {
   render:  () => {
     ReactDom.render(
       <div>hi</div>,
-      document.getElementById('root')
+      document.getElementById('rootaaaa')
     );
   }
 };
+
+alert('ok');
