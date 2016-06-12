@@ -4,7 +4,7 @@
   "description": "名古屋のサークル・イベント情報サイト",
   "main": "index.js",
   "scripts": {
-    "start": "node api/src/server.js",
+    "start": "node --optimize_for_size --max_old_space_size=920 --gc_interval=100 api/src/server.js",
     "build": "webpack",
     "watch": "webpack --watch --progress --inline --hot"
   },

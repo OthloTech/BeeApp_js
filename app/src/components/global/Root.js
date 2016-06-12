@@ -3,21 +3,17 @@ import React from 'react';
 export default class Root extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { button: false };
+    this.state = { count: 1 };
   }
-  toggle() {
-  	if(this.state && this.state.button) {
-  	  this.setState({ button: !this.state.button })
-  	} else {
-  	  this.setState({ button: true })
-  	}
+  count() {
+  	this.setState({ count: this.state.count + 1 });
   }
   render() {
   	const { id } = this.props;
-  	const str = `${id} button ${this.state.button}`;
+  	const str = `${id} button Count on ${this.state.count}`;
     return (
       <div>
-        <button type="button" className="btn btn-primary" onClick={this.toggle}>{str}</button>
+        <button type="button" className="btn btn-primary" onClick={this.count.bind(this)}>{str}</button>
       </div>
     )
   }
