@@ -3,13 +3,15 @@ const path = require('path');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const PATHS = {  
+const PATHS = {
+  bundle: path.join(__dirname, 'app/src/main.js'),
+  style: path.join(__dirname, 'app/styles/main.scss'),
   build: path.join(__dirname, 'build')
 }
 
 module.exports = {
   entry: {
-    bundle: './api/src/server.js'
+    bundle: PATHS.bundle
   },
   output: {
     path: PATHS.build,
@@ -32,31 +34,38 @@ module.exports = {
           cacheDirectory: true,
           presets: ['react', 'es2015']
         }
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style','css','sass']
       }
     ]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
   }
-}
-// , {
+} 
+// {
 //   entry: {
-//     style: './app/styles/main.js'
+//     style: PATHS.style
 //   },
 //   output: {
-//     path: path.resolve(ROOT_PATH, 'app/build'),
-//     filename: '[name].css'
+//     path: PATHS.build,
+//     filename: 'main.css'
 //   },
 //   module: {
 //     loader: [
 //       {
 //         test: /\.css$/,
-//         loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+//         loader: 'style!css'
 //       },
 //       {
 //         test: /\.scss$/,
-//         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
+//         loader: ["style", "css", "sass"]
 //       }
 //     ]
 //   },
 //   plugins: [
-//     new ExtractTextPlugin('[name].css')
+//     new ExtractTextPlugin('main.scss')
 //   ]
 // }]
