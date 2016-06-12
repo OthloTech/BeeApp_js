@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node api/src/server.js",
     "build": "webpack",
-    "watch": "webpack --watch --progress"
+    "watch": "webpack --watch --progress --inline --hot"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,8 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
+    "react-router": "^2.4.1",
+    "react-router-redux": "^4.0.5",
     "reactify": "^1.1.1",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
