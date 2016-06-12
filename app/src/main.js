@@ -1,13 +1,22 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import { render } from 'react-dom';
+import { browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 
-window.App = {
-  render:  () => {
-    ReactDom.render(
-      <div>hi</div>,
-      document.getElementById('rootaaaa')
-    );
-  }
-};
+import Root from './components/global/Root';
+// import configureStore from 'store/configureStore';
+// imort routes from 'routes';
 
-alert('ok');
+const mountNode = document.getElementById('js-root');
+if(mountNode) {
+  // const store = configureStore();
+  // history = syncHistoryWithStore(browserHistory, store);
+
+  render(
+  	<div>
+  	  <p>Hello World</p>
+  	  <Root id='1' />
+  	</div>,
+  	mountNode
+  )
+}
