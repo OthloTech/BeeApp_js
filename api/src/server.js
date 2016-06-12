@@ -1,17 +1,8 @@
 "use strict";
 
 const koa = require('koa');
-const _ = require('koa-route')
-const views = require('co-views')
 const app = koa();
-
 const port = 8888;
-const render = views(__dirname + '/views', { ext: 'ect' });
-
-// dist以下のCSS, JSは静的ファイルとして提供
-app.use(require('koa-static-server')({rootDir: 'dist', rootPath: '/dist'}));
-
-
 
 // ログ -----------------------
 app.use(function*(next) {
@@ -36,20 +27,10 @@ app.use(function*(next) {
   }
 })
 
-
-// app.use(_.get('/', function *() {
-//   this.body = yield render('index', {
-//     title: title
-//   })
-// }));
-
-app.use(function *(){  
-  this.body = 'Hello from koajs';
-});
-// // all other routes
-// app.use(function *() {
-//   this.body = yield render('index')
-// });
+// ルート定義
+const router = require('./routes/index')(app);
+// dist以下のCSS, JSは静的ファイルとして提供
+app.use(require('koa-static-server')({rootDir: 'app/build', rootPath: '/app/build'}));
 
 // サーバー起動
 app.listen(port, function() {
