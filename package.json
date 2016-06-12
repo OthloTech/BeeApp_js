@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node api/src/server.js",
+    "build": "webpack",
     "watch": "webpack --watch --progress"
   },
   "repository": {
