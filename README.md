@@ -1,5 +1,16 @@
 # BeeApp
-BeeAppをAllJSで書き直す。
+
+## 開発環境
+
+* Node.js
+* React
+* Redux
+* es6
+* webpack
+* babel
+* SCSS
+
+## セット
 
 ```
 git clone https://github.com/OthloTech/BeeApp.git
