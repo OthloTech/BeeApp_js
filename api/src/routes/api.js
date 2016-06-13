@@ -2,6 +2,11 @@
 
 const Router = require('koa-router')
 const path = require('path')
+const model = require('../models/index')
+
+const Club = model.Club
+const ClubDetail = model.ClubDetail
+
 
 const route = (app) => {
   const restApiRouter = new Router({
