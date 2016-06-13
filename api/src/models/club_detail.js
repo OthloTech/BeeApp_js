@@ -18,10 +18,10 @@ const ClubDetailSchema = Schema({
   place: String,
   scale: String,
   budget: String,
-  drinkingFrequency, String,
+  drinkingFrequency: String,
   femaleRatio: Number,
   maleRatio: Number,
   word: String
 })
 
-module.exports.ClubDetail = mongoose.model('ClubDetail', ClubDetailScheme)
+module.exports.ClubDetail = mongoose.model('ClubDetail', ClubDetailSchema)

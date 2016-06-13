@@ -27,6 +27,9 @@ app.use(function*(next) {
   }
 })
 
+// Modelの設定
+const db = require('./models/index');
+
 // ルート定義
 const router = require('./routes/index')(app);
 

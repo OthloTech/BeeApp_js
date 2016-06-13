@@ -5,8 +5,8 @@ const Schema = mongoose.Schema
 
 const ClubSchema = Schema({
   _id: Number,
-  categoryId: Number,
-  name: String,
+  categoryId: { type: Number, required: true },
+  name: { type: String, required: true },
   image: { type: String, default: 'noimage.png' },
   isPublic: { type: Boolean, default: true },
   isOfficial: { type: Boolean, default: false },
