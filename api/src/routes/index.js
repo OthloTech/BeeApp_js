@@ -1,38 +1,16 @@
 "use strict";
 
-const Router = require('koa-router')
 const path = require('path')
-const ect = require('ect')
 const serve = require('koa-static')
 
 const route = (app) => {
-  const renderer = ect({ root: path.resolve(__dirname, '../../../app/build'), ext : '.ect' });
-  const staticRoute = new Router()
-  const restApiRouter = new Router({
-  	prefix: '/api'
-  })
 
-  staticRoute
-    .get('/', function* (next) {
-      const data = {
-      	title: 'BeeApp'
-      }
-      this.body = renderer.render('index.ect', data);
-    })
-    .get('/hello', function* (next) {
-      this.body = 'hello, world'
-    })
-
-  restApiRouter
-    .get('/', function* (next) {
-      this.body = 'ok'
-    })
+  // ルート定義
+  const staticRoute = require('./static')(app)
+  const restApiRouter = require('./api')(app)
   
+  // 静的配信 js, css
   app
-    .use(staticRoute.routes())
-    .use(restApiRouter.routes())
-    .use(restApiRouter.allowedMethods())
-    .use(staticRoute.allowedMethods())
     .use(serve(path.resolve(__dirname, '../../../app/build')))
 }
 
