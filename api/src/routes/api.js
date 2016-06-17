@@ -4,6 +4,7 @@ const Router = require('koa-router')
 const path = require('path')
 const json = require('koa-json')
 const model = require('../models/index')
+const body = require('koa-body')()
 
 const Club = model.Club
 const ClubDetail = model.ClubDetail
@@ -16,18 +17,20 @@ const route = (app) => {
   // json対応
   app.use(json())
 
-  const restApiRouter = new Router({
-  	prefix: '/api'
+  const clubRouter = new Router({
+  	prefix: '/api/clubs'
   })
 
-  restApiRouter
-    .get('/', clubAPI.index, function*(next) { this.body = this.club })
-    .get('/show/:id', clubAPI.show)
-    .get('/new', clubAPI.new)
+  clubRouter
+    .get('/', clubAPI.index)
+    .get('/:id', clubAPI.show)
+    .post('/create', body, clubAPI.create)
+    .post('/:id/edit', body, clubAPI.edit)
+    .post('/:id/destroy', body, clubAPI.destroy)
 
   app
-    .use(restApiRouter.routes())
-    .use(restApiRouter.allowedMethods())  
+    .use(clubRouter.routes())
+    .use(clubRouter.allowedMethods())  
 }
 
 module.exports = route

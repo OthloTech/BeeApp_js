@@ -6,22 +6,34 @@ const Club = model.Club
 
 // GET /api/clubs
 const index = function* (next) {
-  const _this = this
-  Club.find({}, function(err, club) {
-    //_this.body = yield { club: club }
-    console.log(club)
-  })
-  this.body = { msg: 'hello' }
+  const clubs = yield Club.find({}).exec()
+  this.body = clubs
 }
 
 // GET /api/clubs/:id
 const show = function* (next) {
-  this.body = this.params
+  const id = this.params.id
+  const club = yield Club.find({_id: id}).exec()
+  this.body = club
 }
 
-// GET /api/clubs/new
-const New = function* (next) {
+// POST /api/clubs/create
+const create = function* (next) {
+  console.log(this.request.body)
   this.body = { hi: 'hello' }
+}
+
+// POST /api/clubs/:id/edit
+const edit = function* (next) {
+  console.log(this.params.id)
+  console.log(this.request.body)
+  this.body = this.request.body
+}
+
+// POST /api/clubs/:id/destroy
+const destroy = function* (next) {
+  console.log(this.params.id)
+  this.body = this.request.body
 }
 
 // POST /api/clubs
@@ -29,5 +41,7 @@ const New = function* (next) {
 module.exports = {
   index: index,
   show: show,
-  new: New
+  create: create,
+  edit: edit,
+  destroy: destroy
 }
