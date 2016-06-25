@@ -1,43 +1,25 @@
 import React from 'react';
-import b from '../lib/b';
 import { Link } from'react-router';
 
 export default class MainNav extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { count: 1 }
-  }
-
   render() {
-
     return (
       <div>
-        <div className={b('mainNavLayout')}>
-          <div className={b('mainNav')}>
-            <div class={b('mainNav', 'logo')}>
-              <Link to="/">BeeApp</Link>
-            </div>
-            <div className={b('mainNavSection')}>
-              <ul className={b('mainNavLinks')}>
-                <li className={b('mainNavLink')}>
-                  <Link className={b('mainNavLink', 'main')} to="/">AAAAAA</Link>
-                </li>
-                <li className={b('mainNavLink')}>
-                  <Link className={b('mainNavLink', 'main')} to="/">BBBBBB</Link>
-                </li>
-                <li className={b('mainNavLink')}>
-                  <Link className={b('mainNavLink', 'main')} to="/">CCCCCC</Link>
-                </li>
-                <li className={b('mainNavLink')}>
-                  <Link className={b('mainNavLink', 'main')} to="/">DDDDDD</Link>
-                </li>
-                <li className={b('mainNavLink')}>
-                  <Link className={b('mainNavLink', 'main')} to="/">EEEEEE</Link>
-                </li>
-              </ul>
-            </div>
+        <nav className="nav">
+          <div className="nav-left">
+            <Link to="/" className="nav-item">BeeApp</Link>
           </div>
-        </div>
+          <span className="nav-toggle">
+            <span></span>
+             <span></span>
+            <span></span>
+          </span>
+          <div className="nav-right nav-menu">
+            <Link to="/" className="nav-item">Home</Link>
+            <Link to="/" className="nav-item">サークル</Link>
+            <Link to="/" className="nav-item">イベント</Link>
+          </div>
+        </nav>
         {this.props.children}
       </div>
     )
