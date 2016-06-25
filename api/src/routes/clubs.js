@@ -4,10 +4,26 @@ const co = require('co')
 const model = require('../models/index')
 const Club = model.Club
 
+var clubsJSON = new Array(10);
+for(let i=0; i < 10; i++) {
+  clubsJSON[i] = {
+    _id: i,
+    categoryId: i,
+    name: `sample${i}`,
+    isPublic: true,
+    isOfficial: true,
+    isGirlsOnly: true,
+    body: 'asamsoaskaosmaoskaosmaosams',
+    image: 'https://octodex.github.com/images/octobiwan.jpg'
+  }
+}
+
 // GET /api/clubs
 const index = function* (next) {
   const clubs = yield Club.find({}).exec()
-  this.body = clubs
+  //this.body = clubs
+
+  this.body = clubsJSON;
 }
 
 // GET /api/clubs/:id
