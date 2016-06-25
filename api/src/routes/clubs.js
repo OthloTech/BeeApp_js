@@ -36,8 +36,6 @@ const destroy = function* (next) {
   this.body = this.request.body
 }
 
-// POST /api/clubs
-
 module.exports = {
   index: index,
   show: show,

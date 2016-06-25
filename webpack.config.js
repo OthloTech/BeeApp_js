@@ -1,3 +1,5 @@
+require('babel-core/register');
+
 const webpack = require('webpack');
 const path = require('path');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
@@ -12,7 +14,6 @@ const PATHS = {
 
 module.exports = {
   entry: {
-    //bundle: './app/src/main.js'
     bundle: PATHS.bundle
   },
   output: {
@@ -23,12 +24,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-  plugins: [
-    //new webpack.HotModuleReplacementPlugin(),
-    new HtmlwebpackPlugin({
-      title: 'Listlogs'
-    })
-  ],
+  plugins: [],
   devtool: 'source-map',
   devServer: {
     contentBase: PATHS.dev,
@@ -44,8 +40,8 @@ module.exports = {
         exclude: /node_modules/,
         test: /\.js[x]?$/,
         query: {
-          cacheDirectory: true,
-          presets: ['react', 'es2015']
+          //cacheDirectory: true,
+          presets: ['react', 'es2015', 'stage-0']
         }
       },
       {

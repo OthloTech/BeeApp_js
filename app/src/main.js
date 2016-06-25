@@ -1,22 +1,23 @@
+require('babel-polyfill');
+
 import React from 'react';
 import { render } from 'react-dom';
-import { browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { Provider } from 'react-redux';
+import { Router, browserHistory } from 'react-router';
+//import { syncHistoryWithStore } from 'react-router-redux';
 
 import Root from './components/global/Root';
-// import configureStore from 'store/configureStore';
-// imort routes from 'routes';
+import routes from './routes';
+import configureStore from './store/configureStore';
 
-const mountNode = document.getElementById('js-root');
-if(mountNode) {
-  // const store = configureStore();
-  // history = syncHistoryWithStore(browserHistory, store);
+const store = configureStore();
+const rootElement = document.getElementById('app');
 
+if(rootElement) {
   render(
-  	<div>
-  	  <p>Hello World</p>
-  	  <Root id='1' />
-  	</div>,
-  	mountNode
+    <Provider store={store}>
+      <Router history={browserHistory} routes={routes} />
+    </Provider>,
+    rootElement
   )
 }
