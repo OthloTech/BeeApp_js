@@ -50,28 +50,4 @@ module.exports = {
       }
     ]
   }
-} 
-// {
-//   entry: {
-//     style: PATHS.style
-//   },
-//   output: {
-//     path: PATHS.build,
-//     filename: 'main.css'
-//   },
-//   module: {
-//     loader: [
-//       {
-//         test: /\.css$/,
-//         loader: 'style!css'
-//       },
-//       {
-//         test: /\.scss$/,
-//         loader: ["style", "css", "sass"]
-//       }
-//     ]
-//   },
-//   plugins: [
-//     new ExtractTextPlugin('main.scss')
-//   ]
-// }]
+}

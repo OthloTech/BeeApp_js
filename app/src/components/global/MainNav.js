@@ -8,12 +8,7 @@ export default class MainNav extends React.Component {
     this.state = { count: 1 }
   }
 
-  componentWillMount() {
-    this.props.initialize()
-  }
-
   render() {
-    const { count } = this.state;
 
     return (
       <div>

@@ -1,4 +1,12 @@
-body, html {
-  margin: 0;
-  padding: 0;
-}
+/* base */
+@import 'base/bulma';
+
+/* layout */
+@import 'layout/header';
+@import 'layout/main';
+@import 'layout/footer';
+
+/* component */
+@import 'components/clubs';
+
+/* lib */
